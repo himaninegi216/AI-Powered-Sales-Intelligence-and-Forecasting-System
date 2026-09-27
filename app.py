@@ -439,7 +439,8 @@ if page == "💬 Sentiment Analysis":
     st.divider()
     st.subheader("💬 Customer Sentiment Analysis")
 
-    # Load customer review dataset
+    
+# Load customer review dataset
 try:
     reviews_df = pd.read_csv("Dataset-SA.csv")
 except FileNotFoundError:
@@ -450,7 +451,6 @@ reviews_df["Rate"] = pd.to_numeric(
     reviews_df["Rate"],
     errors="coerce"
 )
-    
     # Convert rating to numeric
     reviews_df["Rate"] = pd.to_numeric(
         reviews_df["Rate"],
