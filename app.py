@@ -468,18 +468,18 @@ sentiment_rating = (
         .reset_index(name="Average_Rating")
     )
 
-    # Display sentiment metrics
-    positive_count = sentiment_counts.loc[
+# Display sentiment metrics
+positive_count = sentiment_counts.loc[
         sentiment_counts["Sentiment"].str.lower() == "positive",
         "Reviews"
     ].sum()
 
-    negative_count = sentiment_counts.loc[
+ negative_count = sentiment_counts.loc[
         sentiment_counts["Sentiment"].str.lower() == "negative",
         "Reviews"
     ].sum()
 
-    neutral_count = sentiment_counts.loc[
+neutral_count = sentiment_counts.loc[
         sentiment_counts["Sentiment"].str.lower() == "neutral",
         "Reviews"
     ].sum()
