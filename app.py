@@ -314,10 +314,6 @@ if page == "🔮 Forecasting":
 # CUSTOMER SEGMENTATION
 # -----------------------------
 
-# -----------------------------
-# CUSTOMER SEGMENTATION
-# -----------------------------
-
 if page == "👥 Customer Intelligence":
     st.divider()
     st.subheader("👥 Customer Segmentation")
