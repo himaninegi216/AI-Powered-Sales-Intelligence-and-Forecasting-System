@@ -460,8 +460,8 @@ sentiment_counts = (
     .reset_index(name="Reviews")
 )
 
-    # Average rating by sentiment
-    sentiment_rating = (
+# Average rating by sentiment
+sentiment_rating = (
         reviews_df.groupby("Sentiment")["Rate"]
         .mean()
         .round(2)
