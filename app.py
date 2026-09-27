@@ -36,7 +36,7 @@ st.set_page_config(
 # -----------------------------
 # LOAD SALES DATA
 # -----------------------------
-df = pd.read_csv("DATA/train.csv")
+df = pd.read_csv("train.csv")
 # Load trained forecasting model
 forecast_model = joblib.load("MODELS/sales_forecasting_model.pkl")
 
