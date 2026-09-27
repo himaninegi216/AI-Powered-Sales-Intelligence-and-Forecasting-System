@@ -439,47 +439,46 @@ if page == "💬 Sentiment Analysis":
     st.divider()
     st.subheader("💬 Customer Sentiment Analysis")
 
-    
-# Load customer review dataset
-try:
-    reviews_df = pd.read_csv("Dataset-SA.csv")
-except FileNotFoundError:
-    reviews_df = pd.DataFrame(columns=["Rate", "Sentiment"])
+    # Load customer review dataset
+    try:
+        reviews_df = pd.read_csv("Dataset-SA.csv")
+    except FileNotFoundError:
+        reviews_df = pd.DataFrame(columns=["Rate", "Sentiment"])
 
-# Convert rating to numeric
-reviews_df["Rate"] = pd.to_numeric(
-    reviews_df["Rate"],
-    errors="coerce"
-)
+    # Convert rating to numeric
+    reviews_df["Rate"] = pd.to_numeric(
+        reviews_df["Rate"],
+        errors="coerce"
+    )
 
-# Sentiment distribution
-sentiment_counts = (
-    reviews_df["Sentiment"]
-    .value_counts()
-    .rename_axis("Sentiment")
-    .reset_index(name="Reviews")
-)
+    # Sentiment distribution
+    sentiment_counts = (
+        reviews_df["Sentiment"]
+        .value_counts()
+        .rename_axis("Sentiment")
+        .reset_index(name="Reviews")
+    )
 
-# Average rating by sentiment
-sentiment_rating = (
+    # Average rating by sentiment
+    sentiment_rating = (
         reviews_df.groupby("Sentiment")["Rate"]
         .mean()
         .round(2)
         .reset_index(name="Average_Rating")
     )
 
-# Display sentiment metrics
-positive_count = sentiment_counts.loc[
+    # Display sentiment metrics
+    positive_count = sentiment_counts.loc[
         sentiment_counts["Sentiment"].str.lower() == "positive",
         "Reviews"
     ].sum()
 
- negative_count = sentiment_counts.loc[
+    negative_count = sentiment_counts.loc[
         sentiment_counts["Sentiment"].str.lower() == "negative",
         "Reviews"
     ].sum()
 
-neutral_count = sentiment_counts.loc[
+    neutral_count = sentiment_counts.loc[
         sentiment_counts["Sentiment"].str.lower() == "neutral",
         "Reviews"
     ].sum()
@@ -490,14 +489,12 @@ neutral_count = sentiment_counts.loc[
     col2.metric("😡 Negative Reviews", f"{negative_count:,}")
     col3.metric("😐 Neutral Reviews", f"{neutral_count:,}")
 
-    # Sentiment distribution chart
     st.write("### Sentiment Distribution")
 
     st.bar_chart(
         sentiment_counts.set_index("Sentiment")["Reviews"]
     )
 
-    # Average rating chart
     st.write("### Average Rating by Sentiment")
 
     st.bar_chart(
@@ -578,29 +575,29 @@ if page == "🤖 AI Insights":
         "Monetary"
     ].iloc[0]
 
-    # Sentiment data
-try:
-    reviews_ai = pd.read_csv("Dataset-SA.csv")
+        # Sentiment data
+    try:
+        reviews_ai = pd.read_csv("Dataset-SA.csv")
 
-    reviews_ai["Rate"] = pd.to_numeric(
-        reviews_ai["Rate"],
-        errors="coerce"
-    )
+        reviews_ai["Rate"] = pd.to_numeric(
+            reviews_ai["Rate"],
+            errors="coerce"
+        )
 
-    sentiment_rating_ai = (
-        reviews_ai.groupby("Sentiment")["Rate"]
-        .mean()
-        .round(2)
-        .reset_index(name="Average_Rating")
-    )
+        sentiment_rating_ai = (
+            reviews_ai.groupby("Sentiment")["Rate"]
+            .mean()
+            .round(2)
+            .reset_index(name="Average_Rating")
+        )
 
-    negative_rating = sentiment_rating_ai.loc[
-        sentiment_rating_ai["Sentiment"].str.lower() == "negative",
-        "Average_Rating"
-    ].iloc[0]
+        negative_rating = sentiment_rating_ai.loc[
+            sentiment_rating_ai["Sentiment"].str.lower() == "negative",
+            "Average_Rating"
+        ].iloc[0]
 
-except FileNotFoundError:
-    negative_rating = 0
+    except FileNotFoundError:
+        negative_rating = 0
 
     # Next month's sales prediction
     monthly_sales_ai = (
