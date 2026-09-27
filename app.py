@@ -440,8 +440,11 @@ if page == "💬 Sentiment Analysis":
     st.subheader("💬 Customer Sentiment Analysis")
 
     # Load customer review dataset
+    try:
     reviews_df = pd.read_csv("Dataset-SA.csv")
-
+except FileNotFoundError:
+    reviews_df = pd.DataFrame()
+    
     # Convert rating to numeric
     reviews_df["Rate"] = pd.to_numeric(
         reviews_df["Rate"],
@@ -575,6 +578,7 @@ if page == "🤖 AI Insights":
     ].iloc[0]
 
     # Sentiment data
+try:
     reviews_ai = pd.read_csv("Dataset-SA.csv")
 
     reviews_ai["Rate"] = pd.to_numeric(
@@ -593,6 +597,9 @@ if page == "🤖 AI Insights":
         sentiment_rating_ai["Sentiment"].str.lower() == "negative",
         "Average_Rating"
     ].iloc[0]
+
+except FileNotFoundError:
+    negative_rating = 0
 
     # Next month's sales prediction
     monthly_sales_ai = (
