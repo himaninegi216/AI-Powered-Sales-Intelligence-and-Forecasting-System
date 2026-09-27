@@ -451,12 +451,6 @@ reviews_df["Rate"] = pd.to_numeric(
     reviews_df["Rate"],
     errors="coerce"
 )
-    # Convert rating to numeric
-    reviews_df["Rate"] = pd.to_numeric(
-        reviews_df["Rate"],
-        errors="coerce"
-    )
-
     # Sentiment distribution
     sentiment_counts = (
         reviews_df["Sentiment"]
