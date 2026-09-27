@@ -38,7 +38,7 @@ st.set_page_config(
 # -----------------------------
 df = pd.read_csv("train.csv")
 # Load trained forecasting model
-forecast_model = joblib.load("MODELS/sales_forecasting_model.pkl")
+forecast_model = joblib.load("sales_forecasting_model.pkl")
 
 # Convert dates
 df["Order Date"] = pd.to_datetime(df["Order Date"], errors="coerce")
