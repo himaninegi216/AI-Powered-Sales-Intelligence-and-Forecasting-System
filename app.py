@@ -451,13 +451,14 @@ reviews_df["Rate"] = pd.to_numeric(
     reviews_df["Rate"],
     errors="coerce"
 )
-    # Sentiment distribution
-    sentiment_counts = (
-        reviews_df["Sentiment"]
-        .value_counts()
-        .rename_axis("Sentiment")
-        .reset_index(name="Reviews")
-    )
+
+# Sentiment distribution
+sentiment_counts = (
+    reviews_df["Sentiment"]
+    .value_counts()
+    .rename_axis("Sentiment")
+    .reset_index(name="Reviews")
+)
 
     # Average rating by sentiment
     sentiment_rating = (
