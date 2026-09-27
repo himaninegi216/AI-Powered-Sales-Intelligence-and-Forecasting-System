@@ -440,7 +440,7 @@ if page == "💬 Sentiment Analysis":
     st.subheader("💬 Customer Sentiment Analysis")
 
     # Load customer review dataset
-    reviews_df = pd.read_csv("DATA/Dataset-SA.csv")
+    reviews_df = pd.read_csv("Dataset-SA.csv")
 
     # Convert rating to numeric
     reviews_df["Rate"] = pd.to_numeric(
@@ -575,7 +575,7 @@ if page == "🤖 AI Insights":
     ].iloc[0]
 
     # Sentiment data
-    reviews_ai = pd.read_csv("DATA/Dataset-SA.csv")
+    reviews_ai = pd.read_csv("Dataset-SA.csv")
 
     reviews_ai["Rate"] = pd.to_numeric(
         reviews_ai["Rate"],
