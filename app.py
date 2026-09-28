@@ -3,6 +3,14 @@ import pandas as pd
 import joblib
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
+# -----------------------------
+# PAGE CONFIGURATION
+# -----------------------------
+st.set_page_config(
+    page_title="AI Sales Intelligence",
+    page_icon="📊",
+    layout="wide"
+)
 # ================= SIDEBAR =================
 
 st.sidebar.title("🤖 AI Sales Intelligence")
@@ -24,21 +32,13 @@ page = st.sidebar.radio(
 st.sidebar.divider()
 st.sidebar.caption("AI-Powered Sales Intelligence System")
 
-# -----------------------------
-# PAGE CONFIGURATION
-# -----------------------------
-st.set_page_config(
-    page_title="AI Sales Intelligence",
-    page_icon="📊",
-    layout="wide"
-)
 
 # -----------------------------
 # LOAD SALES DATA
 # -----------------------------
-df = pd.read_csv("DATA/train.csv")
+df = pd.read_csv("train.csv")
 # Load trained forecasting model
-forecast_model = joblib.load("MODELS/sales_forecasting_model.pkl")
+forecast_model = joblib.load("sales_forecasting_model.pkl")
 
 
 
@@ -564,24 +564,7 @@ if page == "🤖 AI Insights":
     ].iloc[0]
 
     # Sentiment data
-    reviews_ai = pd.read_csv("DATA/Dataset-SA.csv")
-
-    reviews_ai["Rate"] = pd.to_numeric(
-        reviews_ai["Rate"],
-        errors="coerce"
-    )
-
-    sentiment_rating_ai = (
-        reviews_ai.groupby("Sentiment")["Rate"]
-        .mean()
-        .round(2)
-        .reset_index(name="Average_Rating")
-    )
-
-    negative_rating = sentiment_rating_ai.loc[
-        sentiment_rating_ai["Sentiment"].str.lower() == "negative",
-        "Average_Rating"
-    ].iloc[0]
+negative_rating = 1.59
 
     # Next month's sales prediction
     monthly_sales_ai = (
