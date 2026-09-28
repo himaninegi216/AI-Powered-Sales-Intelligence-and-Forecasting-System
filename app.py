@@ -563,8 +563,8 @@ if page == "🤖 AI Insights":
         "Monetary"
     ].iloc[0]
 
-    # Sentiment data
-negative_rating = 1.59
+        # Sentiment data
+    negative_rating = 1.59
 
     # Next month's sales prediction
     monthly_sales_ai = (
